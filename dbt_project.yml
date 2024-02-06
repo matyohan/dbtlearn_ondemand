@@ -36,7 +36,16 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  my_new_project:
-    # Applies to all files under models/example/
-    example:
-      +materialized: table
+  jaffle_shop:
+    # all models should have uniue and not null
+    +required_tests: {"unique.*|not_null": 2}
+   
+    marts:
+      #marts should have unique and not_null (inherited fom above)
+      #plus an aditionnal test ofr relationship
+      +required_tests: {"relationship.*":1}
+      
+      core:
+        +materialized: table
+      staging:
+        +materialized: view
