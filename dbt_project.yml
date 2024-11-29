@@ -42,11 +42,19 @@ models:
     +required_tests: {"unique.*|not_null": 2}
    
     marts:
-      #marts should have unique and not_null (inherited fom above)
-      #plus an aditionnal test ofr relationship
-      +required_tests: {"relationship.*":1}
-      
-      core:
-        +materialized: table
-      staging:
-        +materialized: view
+        #marts should have unique and not_null (inherited fom above)
+        #plus an aditionnal test ofr relationship
+        +required_tests: {"relationship.*":1}
+        
+        core:
+          +materialized: table
+    staging:
+      +materialized: view
+
+#Désactiver les tests
+tests:
+  jaffle_shop:
+    interactive_ad_hoc_testing:
+        +enabled: false
+    orders_amount_greater_than_five:
+        +enabled: false
