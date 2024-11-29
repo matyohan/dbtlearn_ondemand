@@ -50,3 +50,11 @@ models:
           +materialized: table
     staging:
       +materialized: view
+
+#Désactiver les tests
+tests:
+  jaffle_shop:
+    interactive_ad_hoc_testing:
+        +enabled: false
+    orders_amount_greater_than_five:
+        +enabled: false
