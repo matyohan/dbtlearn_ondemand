@@ -45,9 +45,7 @@ models:
         #marts should have unique and not_null (inherited fom above)
         #plus an aditionnal test ofr relationship
         +required_tests: {"relationship.*":1}
-        
-        core:
-          +materialized: table
+
     staging:
       +materialized: view
 
